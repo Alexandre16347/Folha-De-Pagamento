@@ -2,7 +2,7 @@ package Classes_Importantes;
 
 import java.util.Calendar;
 
-public class Data {
+public class Datas {
 	
 	Calendar dataLimite;
 
@@ -26,7 +26,7 @@ public class Data {
 		return this.dataLimite.get(Calendar.DAY_OF_MONTH) + "/" + this.dataLimite.get(Calendar.MONTH);
 	}
 	
-	Data(String data){
+	Datas(String data){
 		setdata(data);
 	}
 	

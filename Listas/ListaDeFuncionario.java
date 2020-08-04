@@ -12,7 +12,7 @@ public class ListaDeFuncionario {
 		return listaDeEmpregados;
 	}
 	
-	public static void cadastraEmpregado(String nome, String cargo) {
+	public static boolean cadastraEmpregado(String nome, String cargo) {
 		Vencimento v;
 		if (listaDeEmpregados == null) {
 			listaDeEmpregados = new ArrayList<Empregado>();
@@ -24,26 +24,29 @@ public class ListaDeFuncionario {
 			 v = new Vencimento();
 			listaDeEmpregados.add(funcionario);
 			ListaDeGratificacoes.criaEmpregado(funcionario, v);
-			break;
+			return true;
 		case "Gerente":
 			Empregado gerente = new Gerente(nome);
 			 v = new Vencimento();
 			listaDeEmpregados.add(gerente);
 			ListaDeGratificacoes.criaEmpregado(gerente, v);
-			break;
+			return true;
 		default:
 			System.err.println("Erro!! Opção de cargo inválida...");
-			break;
+			return false;
 		}
 
 	}
 
-	public static void removeEmpregado(int index) {
-		listaDeEmpregados.remove(index);
+	public static boolean removeEmpregado(int index) {
 		if (recuperaEmpregado(index) != null) {
+			Empregado e = recuperaEmpregado(index);
+			ListaDeGratificacoes.getListaDeGratificacoes().remove(e);
 			listaDeEmpregados.remove(index);
-			System.out.println("EMPREGADO EXCLUIDO");
+			System.out.println("\nEMPREGADO EXCLUIDO");
+			return true;
 		}
+		return false;
 	}
 
 	public static void atualizaEmpregadoNome(int index, String novo_nome) {

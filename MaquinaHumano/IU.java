@@ -182,7 +182,7 @@ public class IU {
 				}
 				while (true) {
 					try {
-						System.out.print("\n\nNome: ");
+						System.out.print("\nNome: ");
 						nome = ler.next();
 						for (int i = 0; i < nome.length(); i++) {
 							Character caractere = nome.charAt(i);
@@ -191,7 +191,7 @@ public class IU {
 							}
 						}
 						ListaDeFuncionario.cadastraEmpregado(nome, cargo);
-						System.out.println("EMPREGADO CADASTRADO");
+						System.out.println("\nEMPREGADO CADASTRADO");
 						break;
 					} catch (Exception e) {
 						System.err.println(
@@ -279,7 +279,6 @@ public class IU {
 					break;
 				case 6:
 					ListaDeFuncionario.removeEmpregado(ep);
-					System.out.println("Usuario Excluido");
 					ops = 0;
 				case 0:
 					break;

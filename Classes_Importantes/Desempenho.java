@@ -4,7 +4,7 @@ public class Desempenho extends Gratificacao{
 	
 	public Desempenho(double salario, String data_trabalhada) {
 		super.porcentagem = 0.05;
-		super.dataTrabalhada = new Data(data_trabalhada);
+		super.dataTrabalhada = new Datas(data_trabalhada);
 		super.setTipo(TipoGratificacao.Desempenho);
 		super.calculaGratificacao(salario);
 	}

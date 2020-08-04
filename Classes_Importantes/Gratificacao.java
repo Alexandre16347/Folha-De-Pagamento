@@ -4,7 +4,7 @@ public class Gratificacao {
 	
 	protected double porcentagem;
 	protected TipoGratificacao tipo;
-	protected Data dataTrabalhada;
+	protected Datas dataTrabalhada;
 	protected double valorDaGraftificacao = 0;
 	
 	public boolean equals(Gratificacao g, Gratificacao gg) {
@@ -27,7 +27,7 @@ public class Gratificacao {
 	public void setTipo(TipoGratificacao tipo) {
 		this.tipo = tipo;
 	}
-	public Data getDataTrabalhada() {
+	public Datas getDataTrabalhada() {
 		return dataTrabalhada;
 	}
 	public void setValor(double valor) {
