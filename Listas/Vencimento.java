@@ -5,23 +5,38 @@ import java.util.ArrayList;
 import Classes_Importantes.Gratificacao;
 
 public class Vencimento {
+	
 
-	protected ArrayList<Gratificacao> lista;
+	private double valorMensal = 0;													//Ciacao de variaveis usadas
+	private int contGrat = 0;
+
+	protected ArrayList<Gratificacao> lista;										//Cria minha lista de Gratificacoes
 
 	public Vencimento() {
 		lista = new ArrayList<Gratificacao>();
 	}
 
-	public ArrayList<Gratificacao> getLista() {
-		return lista;
-	}
-
+	//Metodo para cadastrar o Gratificacao
 	public boolean adicionaNaLista(Gratificacao g) {
-
 		return lista.add(g);
+	}
+	
+	//Metodo para calcular o valor de todas as Gratificacoes com o salario do Empregado
+	public double valorDaGratificacao() {
+		if (!lista.isEmpty() || getLista() != null) {
+			setContGrat(0);
+			setValorMensal(0);
+			for (Gratificacao gratificacao : lista) {
+				setContGrat(getContGrat() + 1);
+				setValorMensal(gratificacao.getValorDaGraftificacao() + getValorMensal());
+			}
+			return getValorMensal();
+		}
+		return 0;
 
 	}
 
+	//Remove Gratificacoes
 	public void removeDaLista(int index) {
 		if (recuperaDaLista(index) != null) {
 			lista.remove(index);
@@ -29,25 +44,21 @@ public class Vencimento {
 		}
 
 	}
-
+	
+	//Metodo para recuperar a lista de Gratificacoes completa do Empregado
 	public Gratificacao recuperaDaLista(int index) {
 
-		for (Gratificacao gratificacao : lista) {
+		for (Gratificacao gratificacao : lista) {									//Percorre a lista
 
-			if (lista.indexOf(gratificacao) == index)
+			if (lista.indexOf(gratificacao) == index)								//Testa cada Gratificacao para encontrar a procurada
 				return gratificacao;
 		}
-		Gratificacao g = null;
+		Gratificacao g = null;														//Caso não encontre nenhm Empregado cria um novo e o atribue nulo
 		System.err.println("Gratificacao Inexistente");
 		return g;
 	}
-
-	public void atualizaData(int index, String nova_data) {
-		Gratificacao g = recuperaDaLista(index);
-		g.setDataTrabalhada(nova_data);
-
-	}
-
+	
+	//Metodo que recupera toda a lista de Gratificacao do Empregado e mostra ao usuario
 	public void recuperaListaDeGratificacao() {
 
 		if (lista.isEmpty()) {
@@ -59,9 +70,15 @@ public class Vencimento {
 			}
 		}
 	}
+	
+	
+	//Criacao de Geters e Seters renomeados
 
-	private double valorMensal = 0;
-	private int contGrat = 0;
+	public void atualizaData(int index, String nova_data) {
+		Gratificacao g = recuperaDaLista(index);
+		g.setDataTrabalhada(nova_data);
+
+	}
 
 	public double getValorMensal() {
 		return valorMensal;
@@ -78,19 +95,9 @@ public class Vencimento {
 	public void setContGrat(int contGrat) {
 		this.contGrat = contGrat;
 	}
-
-	public double valorDaGratificacao() {
-		if (!lista.isEmpty() || getLista() != null) {
-			setContGrat(0);
-			setValorMensal(0);
-			for (Gratificacao gratificacao : lista) {
-				setContGrat(getContGrat() + 1);
-				setValorMensal(gratificacao.getValorDaGraftificacao() + getValorMensal());
-			}
-			return getValorMensal();
-		}
-		return 0;
-
+	
+	public ArrayList<Gratificacao> getLista() {
+		return lista;
 	}
 
 }

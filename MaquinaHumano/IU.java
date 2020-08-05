@@ -10,16 +10,24 @@ import Listas.ListaDeGratificacoes;
 
 public class IU {
 
-	private static Scanner ler;
+	private static Scanner ler;											//Criando os atributos de leitura do teclado
 
 	/*
 	 * "SubMenu Funcionario e Gratificacao"
 	 * 
-	 * + Recupera Dados + Atualiza Dados + Mostra Lista de Gratificacao + Adiciona
-	 * Gratificacao = Hora Extra = Desemprenho + Remove Gratificacao // passa o
-	 * indice da gratificacao + Atualiza Gratificacao + Voltar
+	 * + Recupera Dados 
+	 * + Atualiza Dados 
+	 * + Mostra Lista de Gratificacao 
+	 * + Adiciona
+	 * + Gratificacao 
+	 * 		= Hora Extra 
+	 * 		= Desemprenho
+	 * + Remove Gratificacao // passa o indice da gratificacao 
+	 * + Atualiza Gratificacao
+	 * + Voltar
 	 */
-
+	
+	//Menu Principal que irá ser exibido;
 	private static void menuPrincipal() {
 		System.out.println("\n\n------ MENU DE PRINCIPAL ------\n");
 		System.out.println("[1] Menu de empregados");
@@ -28,6 +36,7 @@ public class IU {
 		System.out.print("\nDigite sua opção: ");
 	}
 
+	//Menu de funcionário que irá ser exibido;
 	private static void menuDeFuncionario() {
 
 		System.out.println("\n\n------ MENU DE EMPREGADO ------\n");
@@ -40,6 +49,7 @@ public class IU {
 
 	}
 
+	//Sub menu de funcionário que irá ser exibido;
 	private static void subMenuDeFuncionario(Empregado e) {
 
 		System.out.println("\n\n------ MENU DO EMPREGADO " + e.getNome() + " ------\n");
@@ -56,6 +66,7 @@ public class IU {
 
 	}
 
+	//Menu de Gratificação que irá ser exibido;
 //	private static void menuDeGratificacao() {
 //		System.out.println("------ MENU DE GRATIFICAÇÃO ------");
 //		System.out.println("[1] Cadastrar Nova Gratificacao");
@@ -66,8 +77,11 @@ public class IU {
 //		System.out.print("Digite sua opção: ");
 //	}
 
+	
+	//Criando o menu d que irá atualizar uma gratificação;
 	private static void menuAtualizaGratificacao(TipoGratificacao tp) {
 
+		//Condição para saber se a gratificação é por desmepenho ou por hora extra;
 		if (tp == TipoGratificacao.Hora_extra) {
 			System.out.println("\n\n------ MENU DE ATUALIZAÇÃO ------\n");
 			System.out.println("[1] Atualiza data trabalhada");
@@ -84,6 +98,7 @@ public class IU {
 
 	}
 
+	//Menu que atualiza funcionário que irá ser exibido;
 	private static void menuAtualizaFuncionario() {
 
 		System.out.println("\n\n------ MENU DE ATUALIZAÇÃO ------\n");
@@ -94,13 +109,14 @@ public class IU {
 		System.out.print("\nDigite sua opção: ");
 	}
 
+	//Criando a interface de usuário principal;
 	public static void IUPrincipal() {
 		int op;
 		ler = new Scanner(System.in);
 
 		do {
-			menuPrincipal();
-			op = ler.nextInt();
+			menuPrincipal();											//Chama o print do menu com suas opcoes 
+			op = ler.nextInt();											//Le a 
 			switch (op) {
 			case 1:
 				IUdeFuncionario();
@@ -118,6 +134,7 @@ public class IU {
 		} while (op != 0);
 	}
 
+	//Criando a interface de usuário que irá fazer as modificações possíveis em um empregado;
 	public static void IUdeFuncionario() {
 		ler = new Scanner(System.in);
 		int opf;
@@ -141,6 +158,7 @@ public class IU {
 				IUSubFuncionario(ep);
 				break;
 
+			//opção em caso de execução de um cadastro de empregado;
 			case 3:
 				String nome;
 				String cargo = "";
@@ -165,10 +183,12 @@ public class IU {
 						System.out.println("Opcao invalida");
 						break;
 					}
-					if (f == 0)
+					if (f == 0)		//condicional para sair do laço infinito;
 						break;
 				}
 				while (true) {
+					
+					//Bloco try catch para tratar a exceção caso o usuário digite algo que não seja letras; 
 					try {
 						System.out.print("\nNome: ");
 						nome = ler.next();
@@ -196,9 +216,10 @@ public class IU {
 				break;
 
 			}
-		} while (opf != 0);
+		} while (opf != 0);		//condição para sair do laço infinito;
 	}
-
+	
+	//Criando sub interface de usuário, na qual mostra as opções possíveis de um empregado;
 	private static void IUSubFuncionario(int ep) {
 		Empregado e = ListaDeFuncionario.recuperaEmpregado(ep);
 		if (e != null) {
@@ -220,6 +241,8 @@ public class IU {
 				case 3:
 					ListaDeGratificacoes.mostraLista(ep);
 					break;
+					
+				//Tela que adiciona uma gratificação a um empregado;
 				case 4:
 					int opg;
 					boolean f = true;
@@ -238,17 +261,20 @@ public class IU {
 							System.out.print("Data Trabalhada: ");
 							String data = ler.next();
 
-							ListaDeGratificacoes.adicionaGratificacao(ep, data, hora);
-							System.out.println("GRATIFICACAO ADICIONADA");
+							if(ListaDeGratificacoes.adicionaGratificacao(ep, data, hora))
+								System.out.println("GRATIFICACAO ADICIONADA");
 							f = false;
 							break;
+							
+						//Tela que irá cadastrar uma gratificação a um empregado;
 						case 2:
 							System.out.println("------ MENU DE CADASTRO ------");
 
 							System.out.print("Data Trabalhada: ");
 							String data1 = ler.next();
 
-							ListaDeGratificacoes.adicionaGratificacao(ep, data1);
+							if(ListaDeGratificacoes.adicionaGratificacao(ep, data1))
+								System.out.println("GRATIFICACAO ADICIONADA");
 							f = false;
 							break;
 						default:
@@ -279,14 +305,16 @@ public class IU {
 					break;
 				}
 
-			} while (ops != 0);
+			} while (ops != 0);		//Condição para sair do laço infinito;
 		}
 
 	}
 
+	//Tela que faz as ações possíveis na gratificação de um funcionário;
 	private static void IUAtualizaGratificacao(int ep, int opg2) {
 		Gratificacao g = ListaDeGratificacoes.recuperaGratificacao(ep, opg2);
 
+		//Condição para testar se a lista de gratificações não é nula;
 		if (g != null) {
 			TipoGratificacao tp = g.getTipo();
 			ler = new Scanner(System.in);
@@ -298,6 +326,7 @@ public class IU {
 
 				opg = ler.nextInt();
 
+				//Tela para cadastrar uma gratificação por desempenho ou por hora_extra;
 				switch (tp) {
 				case Desempenho:
 					switch (opg) {
@@ -348,11 +377,12 @@ public class IU {
 					break;
 				}
 
-			} while (opg != 0);
+			} while (opg != 0);		//Condição para sair do laço infinito;
 		}
 
 	}
 
+	//Interface de usuário que atualiza um funcionário;
 	private static void IUAtualizaFuncionario(Empregado e) {
 		int opsf;
 		do {
@@ -384,7 +414,7 @@ public class IU {
 				System.out.println("Opcao invalida");
 				break;
 			}
-		} while (opsf != 0);
+		} while (opsf != 0);		//Condição de saída do laço infinito;
 
 	}
 }
