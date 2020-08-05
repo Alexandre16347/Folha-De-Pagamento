@@ -6,6 +6,8 @@ import java.util.Map;
 import Classes_Importantes.*;
 
 public class ListaDeGratificacoes {
+	
+	private static Datas dataTest = new Datas();
 
 	private static Map<Empregado, Vencimento> listaDeGratificacoes;							//Criacao de um mapa para referenciar o Empregado
 																							//a sua lista de Gratificacoes
@@ -18,11 +20,13 @@ public class ListaDeGratificacoes {
 		if (listaDeGratificacoes == null) {
 			listaDeGratificacoes = new HashMap<>();
 		}
-
-		v = (Vencimento) listaDeGratificacoes.get(e);
-		v.adicionaNaLista(new Desempenho(e.getSalario(), data_trabalhada));
 		
-		return true;
+		if(dataTest.setdata(data_trabalhada)) {
+			v = (Vencimento) listaDeGratificacoes.get(e);
+			v.adicionaNaLista(new Desempenho(e.getSalario(), data_trabalhada));
+			return true;
+		}
+		return false;
 
 	}
 	
@@ -34,11 +38,15 @@ public class ListaDeGratificacoes {
 		if (listaDeGratificacoes == null) {
 			listaDeGratificacoes = new HashMap<>();
 		}
-
-		v = (Vencimento) listaDeGratificacoes.get(e);
-		v.adicionaNaLista(new HoraExtra(e.getSalario(), data_trabalhada, horas_trabalhadas));
-
-		return true;
+		
+		if(horas_trabalhadas > 0 && dataTest.setdata(data_trabalhada)) {
+			v = (Vencimento) listaDeGratificacoes.get(e);
+			v.adicionaNaLista(new HoraExtra(e.getSalario(), data_trabalhada, horas_trabalhadas));
+			return true;
+		}else if(horas_trabalhadas <= 0){
+			System.out.println("VERIFIQUE O AS HORAS TRABALHADAS");
+		}
+		return false;
 
 	}
 	

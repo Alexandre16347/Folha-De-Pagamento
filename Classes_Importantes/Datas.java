@@ -66,8 +66,13 @@ public class Datas {
 	}
 
 	//Construtor
-	Datas(String data) {
+	public Datas(String data) {
 		setdata(data);
 	}
+	
+	public Datas() {
+		
+	}
+	
 
 }

@@ -11,7 +11,8 @@ import Listas.ListaDeGratificacoes;
 public class IU {
 
 	private static Scanner ler;											//Criando os atributos de leitura do teclado
-
+	private static String leitura;
+	
 	/*
 	 * "SubMenu Funcionario e Gratificacao"
 	 * 
@@ -116,7 +117,21 @@ public class IU {
 
 		do {
 			menuPrincipal();											//Chama o print do menu com suas opcoes 
-			op = ler.nextInt();											//Le a 
+			try {
+				leitura = ler.next();
+				for (int i = 0; i < leitura.length(); i++) {
+					Character caractere = leitura.charAt(i);
+					if (!(Character.isDigit(caractere))) {
+						throw new Exception();
+					}
+				}
+				op = Integer.valueOf(leitura);
+			} catch (Exception e) {
+				System.err.println("\nDigite apenas numeros");
+				op = 99;
+				leitura = "erro";
+			}	
+			
 			switch (op) {
 			case 1:
 				IUdeFuncionario();
@@ -128,7 +143,8 @@ public class IU {
 				System.out.println("Saindo .....");
 				break;
 			default:
-				System.out.println("Opcao invalida, digite novamente.");
+				if(!leitura.equals("erro"))
+					System.out.println("\nOpcao invalida, digite novamente.");
 				break;
 			}
 		} while (op != 0);
@@ -141,7 +157,21 @@ public class IU {
 
 		do {
 			menuDeFuncionario();
-			opf = ler.nextInt();
+			
+			try {
+				leitura = ler.next();
+				for (int i = 0; i < leitura.length(); i++) {
+					Character caractere = leitura.charAt(i);
+					if (!(Character.isDigit(caractere))) {
+						throw new Exception();
+					}
+				}
+				opf = Integer.valueOf(leitura);
+			} catch (Exception e) {
+				System.err.println("\nDigite apenas numeros");
+				opf = 99;
+				leitura = "erro";
+			}
 
 			switch (opf) {
 
@@ -169,7 +199,23 @@ public class IU {
 					System.out.println("[1] Funcionario");
 					System.out.println("[2] Gerente");
 					System.out.print("Cargo: ");
-					int c = ler.nextInt();
+					int c;
+					
+					try {
+						leitura = ler.next();
+						for (int i = 0; i < leitura.length(); i++) {
+							Character caractere = leitura.charAt(i);
+							if (!(Character.isDigit(caractere))) {
+								throw new Exception();
+							}
+						}
+						c = Integer.valueOf(leitura);
+					} catch (Exception e) {
+						System.err.println("\nDigite apenas numeros");
+						c = 99;
+						leitura = "erro";
+					}
+					
 					switch (c) {
 					case 1:
 						cargo = "Funcionário";
@@ -180,7 +226,8 @@ public class IU {
 						f = 0;
 						break;
 					default:
-						System.out.println("Opcao invalida");
+						if(!leitura.equals("erro"))
+							System.out.println("\nOpcao invalida, digite novamente.");
 						break;
 					}
 					if (f == 0)		//condicional para sair do laço infinito;
@@ -203,7 +250,7 @@ public class IU {
 						break;
 					} catch (Exception e) {
 						System.err.println(
-								"\nErro!!\n Verifique se o nome esta correto (Sem numeros)\nVerifique se o cargo existe");
+								"\nErro!!\n Verifique se o nome esta correto (Sem numeros)");
 					}
 				}
 
@@ -212,7 +259,8 @@ public class IU {
 			case 0:
 				break;
 			default:
-				System.out.println("Opcao invalida, digite novamente.");
+				if(!leitura.equals("erro"))
+					System.out.println("\nOpcao invalida, digite novamente.");
 				break;
 
 			}
@@ -228,7 +276,20 @@ public class IU {
 			int ops;
 			do {
 				subMenuDeFuncionario(e);
-				ops = ler.nextInt();
+				try {
+					leitura = ler.next();
+					for (int i = 0; i < leitura.length(); i++) {
+						Character caractere = leitura.charAt(i);
+						if (!(Character.isDigit(caractere))) {
+							throw new Exception();
+						}
+					}
+					ops = Integer.valueOf(leitura);
+				} catch (Exception erro) {
+					System.err.println("\nDigite apenas numeros");
+					ops = 99;
+					leitura = "erro";
+				}
 
 				switch (ops) {
 				case 1:
@@ -250,7 +311,22 @@ public class IU {
 						System.out.println("[1] Hora Extra");
 						System.out.println("[2] Desempenho");
 						System.out.print("Opcao: ");
-						opg = ler.nextInt();
+						
+						try {
+							leitura = ler.next();
+							for (int i = 0; i < leitura.length(); i++) {
+								Character caractere = leitura.charAt(i);
+								if (!(Character.isDigit(caractere))) {
+									throw new Exception();
+								}
+							}
+							opg = Integer.valueOf(leitura);
+						} catch (Exception erro) {
+							System.err.println("\nDigite apenas numeros");
+							opg = 99;
+							leitura = "erro";
+						}
+						
 						switch (opg) {
 						case 1:
 							System.out.println("------ MENU DE CADASTRO GRATIFICACAO ------");
@@ -278,7 +354,8 @@ public class IU {
 							f = false;
 							break;
 						default:
-							System.out.println("Opcao invalida ...");
+							if(!leitura.equals("erro"))
+								System.out.println("\nOpcao invalida, digite novamente.");
 							break;
 						}
 					}
@@ -286,7 +363,23 @@ public class IU {
 				case 5:
 
 					System.out.print("Qual o indice da gratificacao: ");
-					int opg1 = ler.nextInt();
+					int opg1;
+					
+					try {
+						leitura = ler.next();
+						for (int i = 0; i < leitura.length(); i++) {
+							Character caractere = leitura.charAt(i);
+							if (!(Character.isDigit(caractere))) {
+								throw new Exception();
+							}
+						}
+						opg1 = Integer.valueOf(leitura);
+					} catch (Exception erro) {
+						System.err.println("\nDigite apenas numeros");
+						opg1 = 99;
+						leitura = "erro";
+					}
+					
 					ListaDeGratificacoes.removeGratificacao(ep, opg1);
 
 					break;
@@ -297,11 +390,28 @@ public class IU {
 					break;
 				case 7:
 					System.out.print("Qual o indice da gratificacao: ");
-					int opg2 = ler.nextInt();
+					int opg2;
+					
+					try {
+						leitura = ler.next();
+						for (int i = 0; i < leitura.length(); i++) {
+							Character caractere = leitura.charAt(i);
+							if (!(Character.isDigit(caractere))) {
+								throw new Exception();
+							}
+						}
+						opg2 = Integer.valueOf(leitura);
+					} catch (Exception erro) {
+						System.err.println("\nDigite apenas numeros");
+						opg2 = 99;
+						leitura = "erro";
+					}
+					
 					IUAtualizaGratificacao(ep, opg2);
 					break;
 				default:
-					System.out.println("Opcao invalida, digite novamente.");
+					if(!leitura.equals("erro"))
+						System.out.println("\nOpcao invalida, digite novamente.");
 					break;
 				}
 
@@ -324,7 +434,20 @@ public class IU {
 
 				menuAtualizaGratificacao(tp);
 
-				opg = ler.nextInt();
+				try {
+					leitura = ler.next();
+					for (int i = 0; i < leitura.length(); i++) {
+						Character caractere = leitura.charAt(i);
+						if (!(Character.isDigit(caractere))) {
+							throw new Exception();
+						}
+					}
+					opg = Integer.valueOf(leitura);
+				} catch (Exception erro) {
+					System.err.println("\nDigite apenas numeros");
+					opg = 99;
+					leitura = "erro";
+				}
 
 				//Tela para cadastrar uma gratificação por desempenho ou por hora_extra;
 				switch (tp) {
@@ -371,7 +494,8 @@ public class IU {
 					case 0:
 						break;
 					default:
-						System.out.println("Opcao Invalida");
+						if(!leitura.equals("erro"))
+							System.out.println("\nOpcao invalida, digite novamente.");
 						break;
 					}
 					break;
@@ -387,31 +511,119 @@ public class IU {
 		int opsf;
 		do {
 			menuAtualizaFuncionario();
-			opsf = ler.nextInt();
+			
+			try {
+				leitura = ler.next();
+				for (int i = 0; i < leitura.length(); i++) {
+					Character caractere = leitura.charAt(i);
+					if (!(Character.isDigit(caractere))) {
+						throw new Exception();
+					}
+				}
+				opsf = Integer.valueOf(leitura);
+			} catch (Exception erro) {
+				System.err.println("\nDigite apenas numeros");
+				opsf = 99;
+				leitura = "erro";
+			}
+			
 			switch (opsf) {
 
 			case 1:
-				System.out.print("Novo Nome: ");
-				String nome = ler.next();
-				e.setNome(nome);
-				System.out.print("Novo Salario: ");
-				Double salario = ler.nextDouble();
-				e.setSalario(salario);
+				String nome;
+				while (true) {
+					
+					//Bloco try catch para tratar a exceção caso o usuário digite algo que não seja letras; 
+					try {
+						System.out.print("Novo Nome: ");
+						nome = ler.next();
+						for (int i = 0; i < nome.length(); i++) {
+							Character caractere = nome.charAt(i);
+							if (Character.isDigit(caractere)) {
+								throw new Exception();
+							}
+						}
+						e.setNome(nome);
+						break;
+					} catch (Exception erro) {
+						System.err.println(
+								"\nErro!!\n Verifique se o nome esta correto (Sem numeros)");
+					}
+				}
+				
+				Double salario;
+				
+				while (true) {
+					
+					//Bloco try catch para tratar a exceção caso o usuário digite algo que não seja letras; 
+					try {
+						System.out.print("Novo Salario: ");
+						leitura = ler.next();
+						for (int i = 0; i < leitura.length(); i++) {
+							Character caractere = leitura.charAt(i);
+							if (!(Character.isDigit(caractere))) {
+								throw new Exception();
+							}
+						}
+						salario = Double.valueOf(leitura);
+						e.setSalario(salario);
+						break;
+					} catch (Exception erro) {
+						System.err.println("\nDigite apenas numeros");
+					}
+				}
+				
 				break;
 			case 2:
-				System.out.print("Novo Nome: ");
-				String nome1 = ler.next();
-				e.setNome(nome1);
+				String nome1;
+				while (true) {
+					
+					//Bloco try catch para tratar a exceção caso o usuário digite algo que não seja letras; 
+					try {
+						System.out.print("Novo Nome: ");
+						nome1 = ler.next();
+						for (int i = 0; i < nome1.length(); i++) {
+							Character caractere = nome1.charAt(i);
+							if (Character.isDigit(caractere)) {
+								throw new Exception();
+							}
+						}
+						e.setNome(nome1);
+						break;
+					} catch (Exception erro) {
+						System.err.println(
+								"\nErro!!\n Verifique se o nome esta correto (Sem numeros)");
+					}
+				}
 				break;
 			case 3:
-				System.out.print("Novo Salario: ");
-				Double salario1 = ler.nextDouble();
-				e.setSalario(salario1);
+				Double salario1;
+				
+				while (true) {
+					
+					//Bloco try catch para tratar a exceção caso o usuário digite algo que não seja letras; 
+					try {
+						System.out.print("Novo Salario: ");
+						leitura = ler.next();
+						for (int i = 0; i < leitura.length(); i++) {
+							Character caractere = leitura.charAt(i);
+							if (!(Character.isDigit(caractere))) {
+								throw new Exception();
+							}
+						}
+						salario1 = Double.valueOf(leitura);
+						e.setSalario(salario1);
+						break;
+					} catch (Exception erro) {
+						System.err.println("\nDigite apenas numeros");
+					}
+				}
 				break;
 			case 0:
 				break;
 			default:
-				System.out.println("Opcao invalida");
+				if(!leitura.equals("erro"))
+					System.out.println("\nOpcao invalida, digite novamente.");
 				break;
 			}
 		} while (opsf != 0);		//Condição de saída do laço infinito;
