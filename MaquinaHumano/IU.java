@@ -456,8 +456,7 @@ public class IU {
 					case 1:
 						System.out.print("Digite a nova data: ");
 						String data = ler.next();
-						if(ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data))
-							System.out.println("ATUALIZADA COM SUCESSO");
+						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data);
 						break;
 					case 0:
 						break;
@@ -472,14 +471,12 @@ public class IU {
 						System.out.print("Digite a nova data: ");
 						String data = ler.next();
 						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data);
-						System.out.println("ATUALIZADA COM SUCESSO");
 						break;
 					case 2:
 						System.out.print("Digite a nova hora trabalhada: ");
 						int hora = ler.nextInt();
 						ListaDeGratificacoes.recuperaGratificacao(ep, opg2)
 								.calculaGratificacao(ListaDeFuncionario.recuperaEmpregado(ep).getSalario(), hora);
-						System.out.println("ATUALIZADA COM SUCESSO");
 						break;
 					case 3:
 						System.out.print("Digite a nova data: ");
@@ -489,7 +486,6 @@ public class IU {
 						int hora1 = ler.nextInt();
 						ListaDeGratificacoes.recuperaGratificacao(ep, opg2)
 								.calculaGratificacao(ListaDeFuncionario.recuperaEmpregado(ep).getSalario(), hora1);
-						System.out.println("ATUALIZADA COM SUCESSO");
 						break;
 					case 0:
 						break;
