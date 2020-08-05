@@ -2,11 +2,13 @@ package Teste;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import Classes_Importantes.*;
@@ -84,12 +86,6 @@ public class TesteFolhaDePagameto {
 	public void TesteRemoveEmpregadoFalse() {
 		assertFalse(ListaDeFuncionario.removeEmpregado(0));
 
-	}
-
-	@Test
-	public void TesteRecuperaListaDeFuncionario() {
-		ArrayList<Empregado> resultado = ListaDeFuncionario.getListaDeEmpregados();
-		assertTrue(resultado != null);
 	}
 
 	@Test

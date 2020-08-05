@@ -11,19 +11,13 @@ import Listas.ListaDeGratificacoes;
 public class IU {
 
 	private static Scanner ler;
-	
+
 	/*
 	 * "SubMenu Funcionario e Gratificacao"
 	 * 
-	 * + Recupera Dados 
-	 * + Atualiza Dados 
-	 * + Mostra Lista de Gratificacao 
-	 * + Adiciona Gratificacao
-			= Hora Extra 
-			= Desemprenho 
-		+ Remove Gratificacao // passa o indice da gratificacao 
-		+ Atualiza Gratificacao 
-		+ Voltar
+	 * + Recupera Dados + Atualiza Dados + Mostra Lista de Gratificacao + Adiciona
+	 * Gratificacao = Hora Extra = Desemprenho + Remove Gratificacao // passa o
+	 * indice da gratificacao + Atualiza Gratificacao + Voltar
 	 */
 
 	private static void menuPrincipal() {
@@ -62,7 +56,6 @@ public class IU {
 
 	}
 
-
 //	private static void menuDeGratificacao() {
 //		System.out.println("------ MENU DE GRATIFICAÇÃO ------");
 //		System.out.println("[1] Cadastrar Nova Gratificacao");
@@ -73,7 +66,6 @@ public class IU {
 //		System.out.print("Digite sua opção: ");
 //	}
 
-	
 	private static void menuAtualizaGratificacao(TipoGratificacao tp) {
 
 		if (tp == TipoGratificacao.Hora_extra) {
@@ -92,7 +84,6 @@ public class IU {
 
 	}
 
-	
 	private static void menuAtualizaFuncionario() {
 
 		System.out.println("\n\n------ MENU DE ATUALIZAÇÃO ------\n");
@@ -106,6 +97,7 @@ public class IU {
 	public static void IUPrincipal() {
 		int op;
 		ler = new Scanner(System.in);
+
 		do {
 			menuPrincipal();
 			op = ler.nextInt();
@@ -137,13 +129,9 @@ public class IU {
 			switch (opf) {
 
 			case 1:
-				try {
-					ListaDeFuncionario.recuperaListaDeEmpregados();
-				} catch (Exception e) {
-					System.err.println("\nErro! Não existe lista de funcionários\n");
-					System.out.println("Cadastre um funcionário\n");
-					IUdeFuncionario();
-				}
+
+				ListaDeFuncionario.recuperaListaDeEmpregados();
+
 				break;
 
 			case 2:
@@ -251,7 +239,6 @@ public class IU {
 							String data = ler.next();
 
 							ListaDeGratificacoes.adicionaGratificacao(ep, data, hora);
-							System.out.println("GRATIFICACAO ADICIONADA");
 							f = false;
 							break;
 						case 2:
@@ -261,7 +248,6 @@ public class IU {
 							String data1 = ler.next();
 
 							ListaDeGratificacoes.adicionaGratificacao(ep, data1);
-							System.out.println("GRATIFICACAO ADICIONADA");
 							f = false;
 							break;
 						default:
@@ -299,7 +285,7 @@ public class IU {
 
 	private static void IUAtualizaGratificacao(int ep, int opg2) {
 		Gratificacao g = ListaDeGratificacoes.recuperaGratificacao(ep, opg2);
-		
+
 		if (g != null) {
 			TipoGratificacao tp = g.getTipo();
 			ler = new Scanner(System.in);
