@@ -6,7 +6,7 @@ public class Datas {
 
 	Calendar dataLimite;
 
-	public void setdata(String data) {
+	public boolean setdata(String data) {
 
 		
 		try {
@@ -31,9 +31,11 @@ public class Datas {
 			this.dataLimite = Calendar.getInstance();
 			this.dataLimite.set(Calendar.DAY_OF_MONTH, arrayDiaEMes[0]);
 			this.dataLimite.set(Calendar.MONTH, arrayDiaEMes[1]);
-			System.out.println("GRATIFICACAO ADICIONADA");
+			
+			return true;
 		} catch (Exception e) {
 			System.out.println("Digite uma data valida (Ex.: 30/12)");
+			return false;
 		}
 
 	}

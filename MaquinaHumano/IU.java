@@ -232,13 +232,14 @@ public class IU {
 						case 1:
 							System.out.println("------ MENU DE CADASTRO GRATIFICACAO ------");
 
-							System.out.print("Qunatidade de horas trabalhada: ");
+							System.out.print("Quantidade de horas trabalhada: ");
 							int hora = ler.nextInt();
 
 							System.out.print("Data Trabalhada: ");
 							String data = ler.next();
 
 							ListaDeGratificacoes.adicionaGratificacao(ep, data, hora);
+							System.out.println("GRATIFICACAO ADICIONADA");
 							f = false;
 							break;
 						case 2:
@@ -269,7 +270,7 @@ public class IU {
 				case 0:
 					break;
 				case 7:
-					System.out.println("Qual o indice da gratificacao: ");
+					System.out.print("Qual o indice da gratificacao: ");
 					int opg2 = ler.nextInt();
 					IUAtualizaGratificacao(ep, opg2);
 					break;
@@ -303,8 +304,8 @@ public class IU {
 					case 1:
 						System.out.print("Digite a nova data: ");
 						String data = ler.next();
-						ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data);
-						System.out.println("ATUALIZADA COM SUCESSO");
+						if(ListaDeGratificacoes.recuperaGratificacao(ep, opg2).setDataTrabalhada(data))
+							System.out.println("ATUALIZADA COM SUCESSO");
 						break;
 					case 0:
 						break;

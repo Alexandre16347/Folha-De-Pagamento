@@ -25,18 +25,9 @@ public class ListaDeGratificacoes {
 			listaDeGratificacoes = new HashMap<>();
 		}
 
-		if (!listaDeGratificacoes.containsKey(e)) {
-			v = new Vencimento();
-			v.adicionaNaLista(new Desempenho(e.getSalario(), data_trabalhada));
-
-			listaDeGratificacoes.put(e, v);
-
-		} else {
-			v = (Vencimento) listaDeGratificacoes.get(e);
-			v.adicionaNaLista(new Desempenho(e.getSalario(), data_trabalhada));
-
-		}
-
+		v = (Vencimento) listaDeGratificacoes.get(e);
+		v.adicionaNaLista(new Desempenho(e.getSalario(), data_trabalhada));
+		
 		return true;
 
 	}
