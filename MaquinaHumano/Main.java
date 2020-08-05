@@ -16,7 +16,7 @@ public class Main {
 		ListaDeGratificacoes.adicionaGratificacao(2, "28/04");
 		ListaDeGratificacoes.adicionaGratificacao(3, "30/04", 2);
 		ListaDeGratificacoes.adicionaGratificacao(3, "01/05", 3);
-		ListaDeGratificacoes.adicionaGratificacao(1, "27/04", 3);
+		ListaDeGratificacoes.adicionaGratificacao(1, "27/04", 0);
 		
 		IU.IUPrincipal();
 

@@ -55,7 +55,14 @@ public class Gratificacao {
 	}
 	
 	public double calculaGratificacao(double salario, int hora_trabalhada) {
-		this.valorDaGraftificacao = salario * this.porcentagem * hora_trabalhada;
+		try {
+			if(hora_trabalhada <= 0)
+				throw new Exception();
+			this.valorDaGraftificacao = salario * this.porcentagem * hora_trabalhada;
+		} catch(Exception e) {
+			System.out.println("VERIFIQUE O AS HORAS TRABALHADAS");
+		}
+		
 
 		return this.valorDaGraftificacao;
 	}
