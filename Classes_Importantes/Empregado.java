@@ -11,7 +11,7 @@ public abstract class Empregado {
 	 */
 	@Override
 	public String toString() {
-		return "----- PERFIL DO FUNCIONÁRIO -----\nNome: " + getNome() + "\nCargo: " + getCargo() + "\nSalário Base: "
+		return "\n----- PERFIL DO FUNCIONÁRIO -----\nNome: " + getNome() + "\nCargo: " + getCargo() + "\nSalário Base: "
 				+ getSalario() + "\n---------------------------------\n";
 	}
 
